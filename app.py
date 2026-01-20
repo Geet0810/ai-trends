@@ -18,8 +18,6 @@ from utils import models
 from utils import finance_metrics
 from utils import what_if
 
-)
-
 # ---- STREAMLIT CONFIG ----
 st.set_page_config(
     page_title="CFO–CTO AI Workforce Intelligence Dashboard",
