@@ -25,8 +25,8 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
- # ---- LOAD DATA (CACHED) ----                                          
- @st.cache_data(show_spinner=True)                                       
+ # ---- LOAD DATA (CACHED) ----  
+                                      
 def load_all_data():                                                    
 return data_loader.load_data()                                                                                                              
  data = load_all_data()
