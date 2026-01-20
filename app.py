@@ -10,16 +10,14 @@ import sys
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 
-# ---- CORE LIBRARIES ----
 import streamlit as st
 
-# ---- INTERNAL MODULE IMPORTS ----
-from utils import (
-    data_loader,
-    visualizations,
-    models,
-    finance_metrics,
-    what_if
+from utils.data_loader import load_data
+from utils import visualizations
+from utils import models
+from utils import finance_metrics
+from utils import what_if
+
 )
 
 # ---- STREAMLIT CONFIG ----
