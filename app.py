@@ -10,8 +10,10 @@ import sys
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 
+# ---- CORE LIBRARIES ----
 import streamlit as st
 
+# ---- INTERNAL IMPORTS (SAFE STYLE) ----
 from utils.data_loader import load_data
 from utils import visualizations
 from utils import models
@@ -25,8 +27,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
- # ---- LOAD DATA (CACHED) ----  
-
+# ---- LOAD DATA (CACHED) ----
 @st.cache_data(show_spinner=True)
 def load_all_data():
     return load_data()
@@ -37,16 +38,21 @@ data = load_all_data()
 st.title("AI Workforce Intelligence Dashboard")
 st.markdown(
     """
-    **Executive-grade analytics platform designed for CFO & CTO decision-making**  
-    Focus areas: *Risk-Adjusted Value, Talent Growth, Model Trust & Future Readiness*
+    **Executive-grade analytics platform for CFO & CTO decision-making**  
+    Focus: *Risk-Adjusted Value, Talent Growth, Model Trust & Future Readiness*
     """
 )
 
 # ---- SIDEBAR CONTROLS ----
 st.sidebar.header("Executive Controls")
 selected_view = st.sidebar.radio(
-    "Select Executive View",
-    ["Executive Overview", "Risk & Value", "Predictive Intelligence", "What-If & Stress Testing"]
+    "Select View",
+    [
+        "Executive Overview",
+        "Risk & Value",
+        "Predictive Intelligence",
+        "What-If & Stress Testing"
+    ]
 )
 
 # ==============================
@@ -63,7 +69,6 @@ if selected_view == "Executive Overview":
         visualizations.growth_trends(data)
 
     st.divider()
-
     st.subheader("📈 Cumulative Performance Tracker")
     visualizations.cumulative_performance(data)
 
@@ -81,7 +86,6 @@ elif selected_view == "Risk & Value":
         finance_metrics.dual_axis_model_trust(data)
 
     st.divider()
-
     st.subheader("🚨 Outlier & Concentration Risk")
     visualizations.outlier_detection(data)
 
@@ -91,11 +95,9 @@ elif selected_view == "Risk & Value":
 elif selected_view == "Predictive Intelligence":
 
     st.subheader("🔮 Historical Trends & Forecasting")
-
     visualizations.historical_prediction(data)
 
     st.divider()
-
     col1, col2 = st.columns(2)
     with col1:
         models.roc_hvc_curve(data)
@@ -108,11 +110,9 @@ elif selected_view == "Predictive Intelligence":
 elif selected_view == "What-If & Stress Testing":
 
     st.subheader("⚠️ Stress Testing & Scenario Simulation")
-
     what_if.stress_test_slider(data)
 
     st.divider()
-
     st.subheader("🌡️ What-If Analysis & Seasonality Impact")
     what_if.what_if_heatmap(data)
 
