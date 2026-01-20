@@ -26,10 +26,12 @@ st.set_page_config(
 )
 
  # ---- LOAD DATA (CACHED) ----  
-                                      
-def load_all_data():                                                    
-return data_loader.load_data()                                                                                                              
- data = load_all_data()
+
+@st.cache_data(show_spinner=True)
+def load_all_data():
+    return load_data()
+
+data = load_all_data()
 
 # ---- APP TITLE ----
 st.title("AI Workforce Intelligence Dashboard")
