@@ -1,9 +1,9 @@
-import streamlit as st
-from utils.data_loader import load_data
-from utils.visualizations import *
-from utils.models import *
-from utils.finance_metrics import *
-from utils.what_if import *
+from utils import data_loader
+from utils import visualizations
+from utils import models
+from utils import finance_metrics
+from utils import what_if
+
 
 st.set_page_config(layout="wide", page_title="CFO–CTO AI Workforce Dashboard")
 
